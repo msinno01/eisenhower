@@ -1,0 +1,13 @@
+body { font-family: Arial, sans-serif; margin: 0; background: #f5f7fb; }
+header { background: #1f2a44; color: #fff; padding: 1rem 2rem; }
+nav a { color: #f8d56b; margin-right: .5rem; }
+main { padding: 1rem 2rem 2rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 1rem; }
+.quadrant { background: #fff; border-radius: 8px; padding: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+.task { border: 1px solid #d8deea; border-radius: 6px; margin-bottom: .75rem; padding: .5rem .75rem; }
+.task.done { opacity: .7; background: #eaf8ea; }
+.actions { display: flex; gap: .5rem; align-items: center; }
+.messages { list-style: none; padding: 0; }
+.messages li { margin-bottom: .5rem; padding: .5rem; border-radius: 4px; }
+.messages .success { background: #dbf5de; }
+.messages .info { background: #deebfa; }

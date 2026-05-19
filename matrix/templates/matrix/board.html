@@ -1,0 +1,25 @@
+{% load matrix_extras %}
+{% extends 'matrix/base.html' %}
+{% block content %}
+<div class="grid">
+    {% for value,label in quadrants %}
+    <section class="quadrant">
+        <h2>{{ label }}</h2>
+        {% for task in grouped_tasks|get_item:value %}
+            <article class="task {% if task.is_completed %}done{% endif %}">
+                <h3>{{ task.title }}</h3>
+                {% if task.description %}<p>{{ task.description }}</p>{% endif %}
+                <p><strong>Due:</strong> {{ task.due_date|default:'-' }}</p>
+                <div class="actions">
+                    <form method="post" action="{% url 'toggle_complete' task.id %}">{% csrf_token %}<button type="submit">{% if task.is_completed %}Mark Open{% else %}Mark Done{% endif %}</button></form>
+                    <a href="{% url 'update_task' task.id %}">Edit</a>
+                    <a href="{% url 'delete_task' task.id %}">Delete</a>
+                </div>
+            </article>
+        {% empty %}
+            <p>No tasks in this quadrant.</p>
+        {% endfor %}
+    </section>
+    {% endfor %}
+</div>
+{% endblock %}
